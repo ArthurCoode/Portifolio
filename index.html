@@ -473,6 +473,45 @@
         </div>
     </footer>
 
+<div class="chatbot-robot" id="chatbotToggle">
+  <img src="/assets/images/chat-bot.png" alt="Chatbot Robot" />
+</div>
+
+
+<div class="chatbot-float" id="chatbot">
+  <div class="chatbot-header">
+    <span>MarquesBot</span>
+    <button id="closeChat">×</button>
+  </div>
+
+  <div class="chatbot-messages" id="chatbotMessages"></div>
+
+  <div class="chatbot-quickbar" id="quickBar">
+    <button class="quickbar-arrow left" id="quickLeft" aria-label="Anterior">‹</button>
+
+    <div class="quickbar-track" id="quickTrack">
+      <button class="quickbar-chip" data-pt="👋 Oi" data-en="👋 Hi" data-msg="Oi, tudo bem?">👋 Oi</button>
+      <button class="quickbar-chip" data-pt="❓ Ajuda" data-en="❓ Help" data-msg="ajuda">❓ Ajuda</button>
+      <button class="quickbar-chip" data-pt="📁 Projetos" data-en="📁 Projects" data-msg="Quais projetos você realizou?">📁 Projetos</button>
+      <button class="quickbar-chip" data-pt="🛠 Stack" data-en="🛠 Stack" data-msg="Qual sua stack?">🛠 Stack</button>
+      <button class="quickbar-chip" data-pt="🌱 Spring Boot" data-en="🌱 Spring Boot" data-msg="Você tem experiência com Spring Boot?">🌱 Spring Boot</button>
+      <button class="quickbar-chip" data-pt="🧩 Fullstack" data-en="🧩 Fullstack" data-msg="Você tem projetos fullstack?">🧩 Fullstack</button>
+      <button class="quickbar-chip" data-pt="⚛️ React" data-en="⚛️ React" data-msg="Você já trabalhou com React?">⚛️ React</button>
+      <button class="quickbar-chip" data-pt="💼 Oportunidades" data-en="💼 Opportunities" data-msg="Você está disponível para trabalho?">💼 Oportunidades</button>
+      <button class="quickbar-chip" data-pt="📩 Contato" data-en="📩 Contact" data-msg="Como posso entrar em contato?">📩 Contato</button>
+      <button class="quickbar-chip" data-pt="🐙 GitHub" data-en="🐙 GitHub" data-msg="Qual seu GitHub?">🐙 GitHub</button>
+      <button class="quickbar-chip" data-pt="🔗 LinkedIn" data-en="🔗 LinkedIn" data-msg="Qual seu LinkedIn?">🔗 LinkedIn</button>
+    </div>
+
+    <button class="quickbar-arrow right" id="quickRight" aria-label="Próximo">›</button>
+  </div>
+
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="Digite sua mensagem..." />
+    <button id="sendMessage"><i class="bx bx-send"></i></button>
+  </div>
+</div>
+
     <script src="/js/main.js"></script>
 </body>
 
