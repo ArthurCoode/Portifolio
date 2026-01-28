@@ -545,6 +545,231 @@ body {
   color: #0a0a0a;
 }
 
+/* ================= UPDATES / FEED (LinkedIn-like) ================= */
+.updates{
+    min-height: 100vh;
+    padding: 100px 10%;
+    background: #0a0a0a;
+    color: #f2f2f2;
+}
+
+.updates-container{
+    max-width: 980px;
+    margin: 0 auto;
+}
+
+.updates-toolbar{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 26px;
+    flex-wrap: wrap;
+}
+
+.updates-search{
+    flex: 1;
+    min-width: 240px;
+    padding: 14px 16px;
+    border-radius: 12px;
+    border: 1px solid rgba(225,6,0,0.35);
+    background: rgba(255,255,255,0.03);
+    color: #f2f2f2;
+    outline: none;
+    font-size: 14px;
+}
+
+.updates-search::placeholder{ color:#aaa; }
+
+.updates-tags{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.updates-tag{
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(225,6,0,0.45);
+    background: rgba(225,6,0,0.12);
+    color: #f2f2f2;
+    font-size: 12px;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease, color .2s ease;
+    user-select: none;
+}
+
+.updates-tag:hover{
+    transform: translateY(-1px);
+    background: rgba(225,6,0,0.22);
+}
+
+.updates-tag.active{
+    background: #e10600;
+    color: #0a0a0a;
+    border-color: #e10600;
+    font-weight: 700;
+}
+
+.updates-feed{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.update-card{
+    border-radius: 18px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(225,6,0,0.25);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.update-card:hover{
+    transform: translateY(-6px);
+    box-shadow: 0 30px 60px rgba(225,6,0,0.18);
+}
+
+.update-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 20px 10px;
+    gap: 12px;
+}
+
+.update-author{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.update-avatar{
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid rgba(225,6,0,0.55);
+    object-fit: cover;
+    background: #111;
+}
+
+.update-author strong{
+    display: block;
+    font-size: 14px;
+    color: #f2f2f2;
+}
+
+.update-meta{
+    display: block;
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 2px;
+}
+
+.update-date{
+    font-size: 12px;
+    color: #aaa;
+    white-space: nowrap;
+}
+
+.update-body{
+    padding: 0 20px 18px;
+}
+
+.update-title{
+    font-size: 18px;
+    color: #e10600;
+    margin-bottom: 10px;
+}
+
+.update-text{
+    font-size: 14px;
+    line-height: 1.75;
+    color: #ddd;
+    margin-bottom: 14px;
+}
+
+.update-media{
+    width: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(225,6,0,0.25);
+    background: #111;
+    margin-bottom: 14px;
+}
+
+.update-media img{
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+.update-actions{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.update-pill{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(225,6,0,0.45);
+    background: rgba(255,255,255,0.02);
+    color: #f2f2f2;
+    font-size: 12px;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.update-pill:hover{
+    background: rgba(225,6,0,0.16);
+    transform: translateY(-1px);
+}
+
+.update-link{
+    border-color: rgba(225,6,0,0.6);
+    color: #e10600;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.update-link:hover{
+    background: rgba(225,6,0,0.14);
+}
+
+.updates-more{
+    margin: 26px auto 0;
+    display: block;
+    padding: 12px 22px;
+    border-radius: 999px;
+    border: 2px solid #e10600;
+    background: transparent;
+    color: #e10600;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all .25s ease;
+}
+
+.updates-more:hover{
+    background: #e10600;
+    color: #0a0a0a;
+}
+
+
+
+@media (max-width: 768px){
+    .updates{ padding: 80px 5%; }
+    .update-title{ font-size: 16px; }
+    .update-header{ padding: 16px 16px 10px; }
+    .update-body{ padding: 0 16px 16px; }
+}
+
+
 .contact {
   min-height: 100vh;
   padding: 100px 10%;
@@ -1167,3 +1392,14 @@ body {
   }
 }
 
+/* Remove o cursor de digitação (|) ao clicar em qualquer texto do site */
+body {
+    caret-color: transparent;
+}
+
+/* Mantém o cursor normal nos campos de digitação */
+input,
+textarea,
+[contenteditable="true"] {
+    caret-color: auto;
+}

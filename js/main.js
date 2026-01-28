@@ -543,7 +543,266 @@ if (toggleBtn) {
       chatbot.classList.remove("active");
     }
   });
+    /* ================= UPDATES FEED (LinkedIn-like, hardcoded) ================= */
+    (function initUpdatesFeed() {
+        const feedEl = document.getElementById("updatesFeed");
+        const tagsEl = document.getElementById("updatesTags");
+        const searchEl = document.getElementById("updatesSearch");
+        const moreBtn = document.getElementById("updatesMore");
 
-  syncChatUI();
+        if (!feedEl || !tagsEl || !searchEl || !moreBtn) return;
+
+        // Usa o mesmo idioma do site
+        const getLangSafe = () => {
+            try {
+                return (typeof getSiteLang === "function" ? getSiteLang() : "en");
+            } catch {
+                return "en";
+            }
+        };
+
+        // Seus posts (edita aqui e pronto)
+        const POSTS = [
+            // 1) Chatbot beta
+            {
+                id: 10,
+                date: "2026-01-28",
+                title: {
+                    pt: "Versão beta do chatbot do meu portfólio está no ar",
+                    en: "Beta version of my portfolio chatbot is live"
+                },
+                text: {
+                    pt:
+                        "Acabei de lançar a versão beta do chatbot integrado diretamente ao meu portfólio.\n" +
+                        "A ideia é tornar a navegação mais interativa, ajudando visitantes a encontrarem rapidamente informações sobre meus projetos, serviços e tecnologias.\n" +
+                        "O projeto também reforça meu foco em soluções modernas e escaláveis com atenção à experiência do usuário (UX).",
+                    en:
+                        "I’ve just launched the beta version of the chatbot integrated directly into my portfolio.\n" +
+                        "The goal is to make navigation more interactive, helping visitors quickly find information about my projects, services, and technologies.\n" +
+                        "This project also reflects my focus on building modern, scalable solutions with UX in mind."
+                },
+                tags: ["Chatbot", "JavaScript", "UX"],
+                links: [{ label: "Portfolio", url: "https://marquescode.com" }],
+                image: ""
+            },
+
+            // 2) Auth API JWT
+            {
+                id: 11,
+                date: "2026-01-26",
+                title: {
+                    pt: "Novo projeto no GitHub: API de autenticação com JWT",
+                    en: "New GitHub project: authentication API with JWT"
+                },
+                text: {
+                    pt:
+                        "Publiquei uma API completa de autenticação utilizando Spring Boot, Spring Security e JWT.\n" +
+                        "O foco foi aplicar boas práticas de segurança e uma arquitetura bem organizada, com fluxo de Register e Login.\n" +
+                        "Inclui: JWT, BCrypt e rotas protegidas.",
+                    en:
+                        "I published a complete authentication API using Spring Boot, Spring Security, and JWT.\n" +
+                        "The focus was on applying security best practices and a well-organized architecture, including Register and Login.\n" +
+                        "Includes: JWT, BCrypt, and protected routes."
+                },
+                tags: ["Java", "Spring Boot", "JWT"],
+                links: [{ label: "GitHub", url: "https://lnkd.in/e7XYzpRj" }],
+                image: ""
+            },
+
+            // 3) Estudos Java
+            {
+                id: 12,
+                date: "2026-01-22",
+                title: {
+                    pt: "Evolução contínua com Java na prática",
+                    en: "Continuous growth with practical Java projects"
+                },
+                text: {
+                    pt:
+                        "Tenho focado meus estudos em Java com ênfase em projetos práticos.\n" +
+                        "Meu objetivo é fortalecer fundamentos técnicos, aplicar clean code e melhorar organização e legibilidade do código.\n" +
+                        "Sempre conectando teoria e prática para construir soluções funcionais e escaláveis.",
+                    en:
+                        "I’ve been focusing my Java studies with an emphasis on practical projects.\n" +
+                        "My goal is to strengthen fundamentals, apply clean code, and improve code organization and readability.\n" +
+                        "Always connecting theory with practice to build functional and scalable solutions."
+                },
+                tags: ["Java", "Learning", "Clean Code"],
+                links: [],
+                image: ""
+            },
+
+            // 4) Um post reunindo todos os sites entregues
+            {
+                id: 13,
+                date: "2026-01-10",
+                title: {
+                    pt: "Projetos Web entregues: sites institucionais e corporativos",
+                    en: "Delivered web projects: institutional and corporate websites"
+                },
+                text: {
+                    pt:
+                        "Nos últimos meses, desenvolvi e entreguei alguns sites com foco em visual moderno, responsividade e experiência do usuário.\n" +
+                        "Aqui estão alguns projetos publicados:\n" +
+                        "• Demolay Caetité\n" +
+                        "• PNCSB\n" +
+                        "• NextDev",
+                    en:
+                        "Over the past months, I’ve developed and delivered websites focused on modern UI, responsiveness, and user experience.\n" +
+                        "Here are some live projects:\n" +
+                        "• Demolay Caetité\n" +
+                        "• PNCSB\n" +
+                        "• NextDev"
+                },
+                tags: ["Web", "Frontend", "Deploy"],
+                links: [
+                    { label: "Demolay", url: "https://demolaycaetite.com.br" },
+                    { label: "PNCSB", url: "https://pncsb.com.br" },
+                    { label: "NextDev", url: "https://nextdev.company" }
+                ],
+                image: ""
+            }
+        ];
+
+        // Estado
+        let selectedTag = "All";
+        let visibleCount = 4;
+
+        const formatDate = (iso, lang) => {
+            const [y, m, d] = iso.split("-").map(Number);
+            const dateObj = new Date(y, m - 1, d);
+            return dateObj.toLocaleDateString(lang === "pt" ? "pt-BR" : "en-US", {
+                year: "numeric",
+                month: "short",
+                day: "2-digit",
+            });
+        };
+
+        const getText = (obj, lang) => (obj && (obj[lang] || obj.en || obj.pt)) || "";
+
+        const buildTags = () => {
+            const allTags = new Set();
+            POSTS.forEach(p => (p.tags || []).forEach(t => allTags.add(t)));
+            const tags = ["All", ...Array.from(allTags).sort((a, b) => a.localeCompare(b))];
+
+            const lang = getLangSafe();
+            tagsEl.innerHTML = tags.map(tag => {
+                const label = (tag === "All") ? (lang === "pt" ? "Todos" : "All") : tag;
+                const active = tag === selectedTag ? "active" : "";
+                return `<button class="updates-tag ${active}" data-tag="${tag}">${label}</button>`;
+            }).join("");
+
+            tagsEl.querySelectorAll(".updates-tag").forEach(btn => {
+                btn.addEventListener("click", () => {
+                    selectedTag = btn.dataset.tag;
+                    visibleCount = 4;
+                    render();
+                    buildTags();
+                });
+            });
+        };
+
+        const applyLangToSearchPlaceholder = () => {
+            const lang = getLangSafe();
+            const pt = searchEl.getAttribute("data-pt");
+            const en = searchEl.getAttribute("data-en");
+            searchEl.placeholder = (lang === "pt" ? pt : en) || searchEl.placeholder;
+            moreBtn.textContent = (lang === "pt"
+                ? (moreBtn.getAttribute("data-pt") || "Carregar mais")
+                : (moreBtn.getAttribute("data-en") || "Load more"));
+        };
+
+        const render = () => {
+            const lang = getLangSafe();
+            const q = (searchEl.value || "").trim().toLowerCase();
+
+            const filtered = POSTS
+                .slice()
+                .sort((a, b) => (a.date < b.date ? 1 : -1))
+                .filter(p => {
+                    const matchesTag = selectedTag === "All" ? true : (p.tags || []).includes(selectedTag);
+                    const text = (getText(p.title, lang) + " " + getText(p.text, lang) + " " + (p.tags || []).join(" ")).toLowerCase();
+                    const matchesSearch = q ? text.includes(q) : true;
+                    return matchesTag && matchesSearch;
+                });
+
+            const visible = filtered.slice(0, visibleCount);
+
+            feedEl.innerHTML = visible.map(p => {
+                const title = getText(p.title, lang);
+                const text = getText(p.text, lang);
+                const date = formatDate(p.date, lang);
+                const pills = (p.tags || []).map(t => `<span class="update-pill">#${t}</span>`).join("");
+
+                const links = (p.links || []).map(l => `
+        <a class="update-pill update-link" href="${l.url}" target="_blank" rel="noopener noreferrer">${l.label}</a>
+      `).join("");
+
+                const media = p.image ? `
+        <div class="update-media">
+          <img src="${p.image}" alt="${title}">
+        </div>
+      ` : "";
+
+                return `
+        <article class="update-card">
+          <div class="update-header">
+            <div class="update-author">
+              <img class="update-avatar" src="assets/images/Perfil.png" alt="Arthur">
+              <div>
+                <strong>Arthur Marques</strong>
+                <span class="update-meta">${lang === "pt" ? "Atualização" : "Update"}</span>
+              </div>
+            </div>
+            <div class="update-date">${date}</div>
+          </div>
+
+          <div class="update-body">
+            <h3 class="update-title">${title}</h3>
+            <p class="update-text">${text.replace(/\n/g, "<br>")}</p>
+            ${media}
+            <div class="update-actions">
+              ${pills}
+              ${links}
+            </div>
+          </div>
+        </article>
+      `;
+            }).join("");
+
+            moreBtn.style.display = (filtered.length <= visibleCount) ? "none" : "block";
+        };
+
+        // Eventos
+        searchEl.addEventListener("input", () => {
+            visibleCount = 4;
+            render();
+        });
+
+        moreBtn.addEventListener("click", () => {
+            visibleCount += 4;
+            render();
+        });
+
+        // Reagir quando trocar idioma
+        const langToggle = document.getElementById("langToggle");
+        if (langToggle) {
+            langToggle.addEventListener("click", () => {
+                setTimeout(() => {
+                    applyLangToSearchPlaceholder();
+                    buildTags();
+                    render();
+                }, 30);
+            });
+        }
+
+        // Init
+        applyLangToSearchPlaceholder();
+        buildTags();
+        render();
+    })();
+
+
+    syncChatUI();
   syncQuickChipsLanguage();
 })();
