@@ -543,7 +543,7 @@ if (toggleBtn) {
       chatbot.classList.remove("active");
     }
   });
-    /* ================= UPDATES FEED (LinkedIn-like, hardcoded) ================= */
+
     (function initUpdatesFeed() {
         const feedEl = document.getElementById("updatesFeed");
         const tagsEl = document.getElementById("updatesTags");
@@ -552,7 +552,6 @@ if (toggleBtn) {
 
         if (!feedEl || !tagsEl || !searchEl || !moreBtn) return;
 
-        // Usa o mesmo idioma do site
         const getLangSafe = () => {
             try {
                 return (typeof getSiteLang === "function" ? getSiteLang() : "en");
@@ -561,9 +560,7 @@ if (toggleBtn) {
             }
         };
 
-        // Seus posts (edita aqui e pronto)
         const POSTS = [
-            // 1) Chatbot beta
             {
                 id: 10,
                 date: "2026-01-28",
@@ -586,7 +583,6 @@ if (toggleBtn) {
                 image: ""
             },
 
-            // 2) Auth API JWT
             {
                 id: 11,
                 date: "2026-01-26",
@@ -609,7 +605,6 @@ if (toggleBtn) {
                 image: ""
             },
 
-            // 3) Estudos Java
             {
                 id: 12,
                 date: "2026-01-22",
@@ -632,7 +627,6 @@ if (toggleBtn) {
                 image: ""
             },
 
-            // 4) Um post reunindo todos os sites entregues
             {
                 id: 13,
                 date: "2026-01-10",
@@ -664,7 +658,6 @@ if (toggleBtn) {
             }
         ];
 
-        // Estado
         let selectedTag = "All";
         let visibleCount = 4;
 
@@ -773,7 +766,6 @@ if (toggleBtn) {
             moreBtn.style.display = (filtered.length <= visibleCount) ? "none" : "block";
         };
 
-        // Eventos
         searchEl.addEventListener("input", () => {
             visibleCount = 4;
             render();
@@ -784,7 +776,6 @@ if (toggleBtn) {
             render();
         });
 
-        // Reagir quando trocar idioma
         const langToggle = document.getElementById("langToggle");
         if (langToggle) {
             langToggle.addEventListener("click", () => {
@@ -796,7 +787,6 @@ if (toggleBtn) {
             });
         }
 
-        // Init
         applyLangToSearchPlaceholder();
         buildTags();
         render();

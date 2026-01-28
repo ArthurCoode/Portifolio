@@ -1392,12 +1392,10 @@ body {
   }
 }
 
-/* Remove o cursor de digitação (|) ao clicar em qualquer texto do site */
 body {
     caret-color: transparent;
 }
 
-/* Mantém o cursor normal nos campos de digitação */
 input,
 textarea,
 [contenteditable="true"] {
