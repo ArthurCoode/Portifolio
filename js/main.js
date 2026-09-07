@@ -959,6 +959,27 @@ if (toggleBtn) {
   };
 
   const POSTS = [
+        {
+      id: 15,
+      date: "2026-09-07",
+      title: {
+        pt: "🚀 Meu primeiro projeto com PHP e Laravel!",
+        en: "🚀 My first project with PHP and Laravel!"
+      },
+      text: {
+        pt:
+          "Finalizei meu primeiro projeto utilizando PHP, Laravel, API, JavaScript e Blade.\n" +
+          "Utilizei vídeos no YouTube como referência, mas fui modificando e adaptando o projeto para realmente entender cada etapa e aprender mais durante o desenvolvimento.\n" +
+          "Foi um grande aprendizado! Também mantive todo o processo organizado com Git, realizando commits a cada etapa do projeto. 💻",
+        en:
+          "I completed my first project using PHP, Laravel, API, JavaScript, and Blade.\n" +
+          "I used YouTube videos as a reference, but I modified and adapted the project to better understand each step and learn more throughout the development process.\n" +
+          "It was a great learning experience! I also kept the entire development process organized with Git, making commits at each stage of the project. 💻"
+      },
+      tags: ["PHP", "Laravel"],
+      links: [{ label: "GitHub", url: "https://github.com/ArthurCoode/SistemaCasa" }],
+      image: ""
+    },
     {
       id: 14,
       date: "2026-08-31",
