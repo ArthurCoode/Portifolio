@@ -582,11 +582,19 @@ input, textarea, [contenteditable="true"] {
     font-family: var(--font-mono);
     font-size: 15px;
     color: var(--amber);
-    margin: 90px 0 34px;
+    margin: 0 0 34px;
 }
 
-.sub-title:first-of-type {
-    margin-top: 0;
+.portfolio-container + .sub-title {
+    margin-top: 60px;
+}
+
+.portfolio-container + .certificates-wrapper {
+    margin-top: 60px;
+}
+
+.certificates-wrapper .sub-title {
+    margin: 0 0 34px;
 }
 
 /* featured / flagship product card */
