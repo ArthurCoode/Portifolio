@@ -31,7 +31,7 @@
     <meta name="twitter:description" content="Desenvolvedor Full Stack focado em Java e PHP, criador do TranscreveAI.">
     <meta name="twitter:image" content="https://marquescode.com/assets/images/og-cover.png">
 
-    <meta name="theme-color" content="#0a0908">
+    <meta name="theme-color" content="#000000">
 
     <!-- ===================== STRUCTURED DATA ===================== -->
     <script type="application/ld+json">
@@ -40,7 +40,8 @@
         "@type": "Person",
         "name": "Arthur Marques",
         "url": "https://marquescode.com/",
-        "jobTitle": "Full Stack Developer",
+        "jobTitle": "Desenvolvedor Júnior",
+        "worksFor": { "@type": "Organization", "name": "Foco Tecnologia" },
         "knowsAbout": ["Java", "PHP", "Spring Boot", "React", "SQL"],
         "sameAs": [
             "https://github.com/ArthurCoode",
@@ -60,54 +61,60 @@
 
 <body>
 
-    <!-- Header -->
+    <!-- Header (pílula flutuante) -->
     <header class="header" id="siteHeader">
         <a href="#" class="logo">arthur<span>.dev</span></a>
 
         <nav class="navbar">
             <a href="#" data-en="Home" data-pt="Início">Início</a>
             <a href="#about" data-en="About" data-pt="Sobre">Sobre</a>
+            <a href="#experience" data-en="Experience" data-pt="Experiência">Experiência</a>
             <a href="#services" data-en="Services" data-pt="Serviços">Serviços</a>
             <a href="#portfolio" data-en="Portfolio" data-pt="Portfólio">Portfólio</a>
             <a href="#updates" data-en="Updates" data-pt="Atualizações">Atualizações</a>
-            <a href="#contact" data-en="Contact" data-pt="Contato">Contato</a>
-            <button class="lang-btn" id="langToggle">EN</button>
         </nav>
+
+        <div class="header-actions">
+            <button class="lang-btn" id="langToggle">EN</button>
+            <a href="#contact" class="header-cta" data-en="Get in touch" data-pt="Falar comigo">Falar comigo</a>
+        </div>
     </header>
 
     <!-- Home/Hero -->
     <section class="home" id="home">
         <div class="home-grid">
             <div class="home-content">
-                <span class="tag-label" data-en="whoami" data-pt="quem_sou_eu">quem_sou_eu</span>
 
-                <h1 data-en="Hi, I'm Arthur Marques" data-pt="Olá, eu sou Arthur Marques">
-                    Olá, eu sou Arthur Marques
+                <h1>
+                    <span data-en="You bring the problem" data-pt="Você traz o problema.">Você traz o problema.</span><br>
+                    <span data-en="I deliver to" data-pt="Eu entrego a">Eu entrego a </span>
+                    <span class="hl" data-en="solução." data-pt="solução.">solução.</span>
                 </h1>
 
-                <h2 class="role" data-en="Full Stack Developer — Java & PHP"
-                    data-pt="Desenvolvedor Full Stack — Java & PHP">
-                    Desenvolvedor Full Stack — Java & PHP
+                <h2 class="role" data-en="Arthur Marques — Full Stack Developer, Java & PHP"
+                    data-pt="Arthur Marques — Desenvolvedor Full Stack, Java & PHP">
+                    Arthur Marques — Desenvolvedor Full Stack, Java & PHP
                 </h2>
 
-                <p data-en="I build web applications end to end — from REST APIs in Java and PHP to responsive front-ends. I'm the product owner and developer of TranscreveAI, a meeting-transcription SaaS I built and run in production."
-                    data-pt="Desenvolvo aplicações web de ponta a ponta — de APIs REST em Java e PHP a interfaces responsivas. Sou dono de produto e desenvolvedor do TranscreveAI, um SaaS de transcrição de reuniões que construí e mantenho em produção.">
-                    Desenvolvo aplicações web de ponta a ponta — de APIs REST em Java e PHP a interfaces responsivas.
+                <p data-en="I build web applications end to end from REST APIs in Java and PHP to responsive front-ends. I'm the product owner and developer of TranscreveAI, a meeting-transcription SaaS I built and run in production."
+                    data-pt="Desenvolvo aplicações web de ponta a ponta de APIs REST em Java e PHP a interfaces responsivas. Sou dono de produto e desenvolvedor do TranscreveAI, um SaaS de transcrição de reuniões que construí e mantenho em produção.">
+                    Desenvolvo aplicações web de ponta a ponta de APIs REST em Java e PHP a interfaces responsivas.
                     Sou dono de produto e desenvolvedor do TranscreveAI, um SaaS de transcrição de reuniões que
                     construí e mantenho em produção.
                 </p>
+
+                <div class="btn-box">
+                    <a href="#portfolio" data-en="View Projects" data-pt="Ver Projetos">Ver Projetos</a>
+                    <a href="#contact" data-en="Get in Touch" data-pt="Falar Comigo">Falar Comigo</a>
+                </div>
 
                 <div class="stack-pills">
                     <span class="stack-pill primary">Java</span>
                     <span class="stack-pill primary">PHP</span>
                     <span class="stack-pill">Spring Boot</span>
+                    <span class="stack-pill">Laravel</span>
                     <span class="stack-pill">SQL</span>
                     <span class="stack-pill">Docker</span>
-                </div>
-
-                <div class="btn-box">
-                    <a href="#portfolio" data-en="View Projects" data-pt="Ver Projetos">Ver Projetos</a>
-                    <a href="#contact" data-en="Get in Touch" data-pt="Falar Comigo">Falar Comigo</a>
                 </div>
 
                 <div class="home-sci">
@@ -126,6 +133,7 @@
                     <span class="editor-dot"></span>
                     <span class="editor-dot"></span>
                     <span class="editor-filename" id="editorFilename">Developer.java</span>
+                    <span class="editor-pill"><span class="pulse-dot"></span>Disponível</span>
                 </div>
                 <div class="editor-body" id="editorBody">
                     <div><span class="ln">1</span><span class="kw">public class</span> <span class="tp">Developer</span>
@@ -155,8 +163,8 @@
         </div>
     </section>
 
-    <!-- About -->
-    <section class="about" id="about">
+    <!-- About (claro) -->
+    <section class="about light" id="about">
         <div class="about-container">
             <div class="about-content">
                 <span class="tag-label" data-en="about" data-pt="sobre">sobre</span>
@@ -207,6 +215,10 @@
                         <strong data-en="Junior" data-pt="Júnior">Júnior</strong>
                     </div>
                     <div class="row">
+                        <span data-en="Company" data-pt="Empresa">Empresa</span>
+                        <strong>Foco Tecnologia</strong>
+                    </div>
+                    <div class="row">
                         <span data-en="Location" data-pt="Local">Local</span>
                         <strong data-en="Brazil" data-pt="Brasil">Brasil</strong>
                     </div>
@@ -215,18 +227,56 @@
         </div>
     </section>
 
-    <!-- Services -->
-    <section class="services" id="services">
-        <span class="tag-label" data-en="services" data-pt="serviços">serviços</span>
-        <h2 class="section-title" data-en="Services" data-pt="Serviços">Serviços</h2>
-        <p class="section-kicker" data-en="What I take on end to end, from database to interface."
-            data-pt="O que eu assumo de ponta a ponta, do banco de dados à interface.">
-            O que eu assumo de ponta a ponta, do banco de dados à interface.
-        </p>
+    <!-- Experience -->
+    <section class="experience" id="experience">
+        <div class="section-head">
+            <span class="tag-label" data-en="experience" data-pt="experiência">experiência</span>
+            <h2 class="section-title" data-en="Experience" data-pt="Experiência">Experiência</h2>
+            <p class="section-kicker" data-en="Where I'm working today." data-pt="Onde estou atuando hoje.">
+                Onde estou atuando hoje.
+            </p>
+        </div>
+
+        <div class="timeline">
+            <article class="timeline-item">
+                <span class="timeline-dot"></span>
+                <div class="timeline-card">
+                    <div class="timeline-head">
+                        <div>
+                            <h3 data-en="Junior Developer" data-pt="Desenvolvedor Júnior">Desenvolvedor Júnior</h3>
+                            <span class="timeline-company">Foco Tecnologia</span>
+                        </div>
+                        <span class="timeline-date" data-en="Nov 1, 2026 — Present"
+                            data-pt="01 nov 2026 — Atual">01 nov 2026 — Atual</span>
+                    </div>
+                    <p data-en="Working on the development and maintenance of web systems, applying clean code and organized architecture in real projects."
+                        data-pt="Atuando no desenvolvimento e manutenção de sistemas web, aplicando código limpo e arquitetura organizada em projetos reais.">
+                        Atuando no desenvolvimento e manutenção de sistemas web, aplicando código limpo e
+                        arquitetura organizada em projetos reais.
+                    </p>
+                    <div class="timeline-tags">
+                        <span>Java</span><span>PHP</span><span>SQL</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- Services (claro, cards pretos) -->
+    <section class="services light" id="services">
+        <div class="section-head">
+            <span class="tag-label" data-en="services" data-pt="serviços">serviços</span>
+            <h2 class="section-title" data-en="Services" data-pt="Serviços">Serviços</h2>
+            <p class="section-kicker" data-en="What I take on end to end, from database to interface."
+                data-pt="O que eu assumo de ponta a ponta, do banco de dados à interface.">
+                O que eu assumo de ponta a ponta, do banco de dados à interface.
+            </p>
+        </div>
 
         <div class="services-container">
             <div class="service-card">
-                <span class="icon mono">01</span>
+                <span class="card-kicker">01 / Java</span>
+                <div class="icon-tile"><i class='bx bx-code-alt'></i></div>
                 <h3 data-en="Back-end (Java)" data-pt="Back-end (Java)">Back-end (Java)</h3>
                 <p data-en="REST APIs, business logic and server-side applications with Java and Spring Boot."
                     data-pt="APIs REST, lógica de negócio e aplicações server-side com Java e Spring Boot.">
@@ -235,7 +285,8 @@
             </div>
 
             <div class="service-card">
-                <span class="icon mono">02</span>
+                <span class="card-kicker">02 / PHP</span>
+                <div class="icon-tile"><i class='bx bx-server'></i></div>
                 <h3 data-en="Back-end (PHP)" data-pt="Back-end (PHP)">Back-end (PHP)</h3>
                 <p data-en="Server-side applications and integrations in PHP, from routing to database access."
                     data-pt="Aplicações e integrações server-side em PHP, do roteamento ao acesso a banco de dados.">
@@ -244,7 +295,8 @@
             </div>
 
             <div class="service-card">
-                <span class="icon mono">03</span>
+                <span class="card-kicker">03 / Front-end</span>
+                <div class="icon-tile"><i class='bx bx-layout'></i></div>
                 <h3 data-en="Front-end" data-pt="Front-end">Front-end</h3>
                 <p data-en="Responsive, interactive interfaces that consume the APIs I build."
                     data-pt="Interfaces responsivas e interativas que consomem as APIs que eu construo.">
@@ -253,7 +305,8 @@
             </div>
 
             <div class="service-card">
-                <span class="icon mono">04</span>
+                <span class="card-kicker">04 / SQL</span>
+                <div class="icon-tile"><i class='bx bx-data'></i></div>
                 <h3 data-en="Database & Maintenance" data-pt="Banco de Dados & Manutenção">Banco de Dados & Manutenção
                 </h3>
                 <p data-en="Data modeling, SQL persistence, and ongoing maintenance to keep systems stable."
@@ -267,13 +320,16 @@
     <!-- Portfolio -->
     <section class="portfolio" id="portfolio">
         <div class="portfolio-inner">
-            <span class="tag-label" data-en="projects" data-pt="projetos">projetos</span>
-            <h2 class="section-title" data-en="Portfolio" data-pt="Portfólio">Portfólio</h2>
-            <p class="section-kicker"
-                data-en="A product I own end to end, client websites I've shipped, and Java projects on GitHub."
-                data-pt="Um produto que sustento de ponta a ponta, sites de clientes que entreguei e projetos em Java no GitHub.">
-                Um produto que sustento de ponta a ponta, sites de clientes que entreguei e projetos em Java no GitHub.
-            </p>
+            <div class="section-head">
+                <span class="tag-label" data-en="projects" data-pt="projetos">projetos</span>
+                <h2 class="section-title" data-en="Portfolio" data-pt="Portfólio">Portfólio</h2>
+                <p class="section-kicker"
+                    data-en="A product I own end to end, client websites I've shipped, and Java projects on GitHub."
+                    data-pt="Um produto que sustento de ponta a ponta, sites de clientes que entreguei e projetos em Java no GitHub.">
+                    Um produto que sustento de ponta a ponta, sites de clientes que entreguei e projetos em Java no
+                    GitHub.
+                </p>
+            </div>
 
             <!-- Featured product -->
             <div class="featured-card">
@@ -468,13 +524,15 @@
         </div>
     </section>
 
-    <!-- Updates -->
-    <section class="updates" id="updates">
-        <span class="tag-label" data-en="log" data-pt="log">log</span>
-        <h2 class="section-title" data-en="Updates" data-pt="Atualizações">Atualizações</h2>
-        <p class="section-kicker" data-en="What I've shipped recently." data-pt="O que eu entreguei recentemente.">
-            O que eu entreguei recentemente.
-        </p>
+    <!-- Updates (claro) -->
+    <section class="updates light" id="updates">
+        <div class="section-head">
+            <span class="tag-label" data-en="log" data-pt="log">log</span>
+            <h2 class="section-title" data-en="Updates" data-pt="Atualizações">Atualizações</h2>
+            <p class="section-kicker" data-en="What I've shipped recently." data-pt="O que eu entreguei recentemente.">
+                O que eu entreguei recentemente.
+            </p>
+        </div>
 
         <div class="updates-container">
             <div class="updates-toolbar">
@@ -551,6 +609,7 @@
             <div class="footer-nav">
                 <a href="#home" data-en="Home" data-pt="Início">Início</a>
                 <a href="#about" data-en="About" data-pt="Sobre">Sobre</a>
+                <a href="#experience" data-en="Experience" data-pt="Experiência">Experiência</a>
                 <a href="#services" data-en="Services" data-pt="Serviços">Serviços</a>
                 <a href="#portfolio" data-en="Portfolio" data-pt="Portfólio">Portfólio</a>
                 <a href="#contact" data-en="Contact" data-pt="Contato">Contato</a>
@@ -623,6 +682,7 @@
     </div>
 
     <script src="/js/main.js" defer></script>
+    <script src="/js/effects.js" defer></script>
 </body>
 
 </html>
