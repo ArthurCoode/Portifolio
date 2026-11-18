@@ -1,0 +1,13 @@
+{
+  "name": "Arthur Marques — Desenvolvedor Full Stack",
+  "short_name": "arthur.dev",
+  "description": "Portfólio de Arthur Marques, desenvolvedor Full Stack Java & PHP.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "lang": "pt-BR",
+  "icons": [
+    { "src": "/assets/images/favicon.png", "sizes": "500x500", "type": "image/png", "purpose": "any" }
+  ]
+}

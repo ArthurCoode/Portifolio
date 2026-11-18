@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /.idea/
 
 Sitemap: https://marquescode.com/sitemap.xml

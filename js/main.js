@@ -190,6 +190,21 @@ function setSiteLang(lang) {
 
   // botão mostra a PRÓXIMA opção
   if (toggleBtn) toggleBtn.textContent = safe === "pt" ? "EN" : "PT";
+
+  // título e descrição acompanham o idioma (aba do navegador / compartilhamento)
+  const META = {
+    pt: {
+      title: "Arthur Marques | Desenvolvedor Full Stack Java & PHP",
+      desc: "Arthur Marques é desenvolvedor Full Stack (Java, Spring Boot, PHP e Laravel) e criador do TranscreveAI. Veja projetos, stack, experiência e fale comigo para APIs e sistemas web."
+    },
+    en: {
+      title: "Arthur Marques | Full Stack Developer Java & PHP",
+      desc: "Arthur Marques is a Full Stack developer (Java, Spring Boot, PHP and Laravel) and creator of TranscreveAI. See projects, stack, experience and get in touch for APIs and web systems."
+    }
+  };
+  document.title = META[safe].title;
+  const descEl = document.querySelector('meta[name="description"]');
+  if (descEl) descEl.setAttribute("content", META[safe].desc);
 }
 
 function applyTranslations(lang) {
@@ -888,6 +903,14 @@ if (toggleBtn) {
     }
 
     setTimeout(updateQuickArrows, 50);
+  });
+
+  // acessível pelo teclado (Enter / Espaço)
+  chatbotToggle.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      chatbotToggle.click();
+    }
   });
 
   closeChat.addEventListener("click", () => chatbot.classList.remove("active"));
