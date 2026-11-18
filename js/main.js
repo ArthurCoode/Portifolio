@@ -350,7 +350,7 @@ if (toggleBtn) {
         "Se quiser, pergunte sobre uma tecnologia específica, tipo “Java” ou “Docker”.",
 
       career:
-        "💼 Sou desenvolvedor focado em Java e PHP, com evolução constante e boas práticas.\n\n" +
+        "💼 Sou desenvolvedor backend focado em Java e PHP (APIs REST e regras de negócio), com full stack como complemento.\n\n" +
         "Tenho forte interesse em:\n" +
         "• Desenvolvimento de APIs\n" +
         "• Arquitetura limpa\n" +
@@ -478,7 +478,7 @@ if (toggleBtn) {
         "Feel free to ask about a specific one, like “Java” or “Docker”.",
 
       career:
-        "💼 I'm a developer focused on Java and PHP, with continuous growth and best practices.\n\n" +
+        "💼 I'm a backend developer focused on Java and PHP (REST APIs and business logic), with full stack as a complement.\n\n" +
         "I really enjoy:\n" +
         "• API development\n" +
         "• Clean architecture\n" +
